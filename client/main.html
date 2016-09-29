@@ -1,1 +1,522 @@
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="initial-scale=1, width=device-width, maximum-scale=1, minimum-scale=1, user-scalable=no">
+<title>Synnefo</title>
+
+<link href="https://fonts.googleapis.com/css?family=Nunito:400,700,300" rel="stylesheet" type="text/css">
+<link rel="stylesheet" href="css/owl.carousel.css">
+<link rel="stylesheet" href="css/main.css">
+<link rel="stylesheet" type="text/css" media="screen" href="/packages/icons/css/icons.min.css" />
+  
+  <!-- Main Stylesheet -->
+  <link rel="stylesheet" type="text/css" media="screen" href="/css/youtube-video-player.min.css" />
+ 
+  <!-- Perfect Scrollbar -->
+  <link rel="stylesheet" type="text/css" media="screen" href="/packages/perfect-scrollbar/perfect-scrollbar.css" /> 
+
+
+
+
+<!-- <link rel="stylesheet" href="css/bootstarp-select.css"> -->
+</head>
+
+
+<body>
+
+
+
+{{> header}}
+{{> Template.dynamic template=template_name }}
+{{> footer}}
+
+
+</body>
+
+<template name="header">
+<header>
+    <div class="logo"><h1><a class="homepage" href="javascript:void(0)"><img src="images/logo.png" width="59" height="59" alt=""/></a></h1></div>
+    <div class="menu-burger">☰</div>
+    <nav>
+        <ul>
+            <li><a href="javascript:void()">Get in touch</a></li>
+            <li><a href="javascript:void()">Who we are</a></li>
+            <li><a href="javascript:void()" class="browsevideos">Browse videos</a></li>
+            <li><a href="javascript:void()" class="uploadvideos">Upload videos</a></li>
+            <li class="last-menu"><a href="javascript:void()"><img src="images/last-menu.png" width="27" height="28" alt=""/></a></li>
+        </ul>
+    </nav>
+</header>
+</template>
+
+
+<template name="youtubeplayerpopup">
+    <div id="playlist-horizontal"></div>
+  </template>
+
+
+<template name="homepage">
+<div id="homepage" class="home-page">
+  
+    <div class="home-slider">
+
+        <div id="Home-hero" class="owl-carousel home-slide">
+          
+         {{#each slidervideomaster}}
+
+          <div class="sigle-slide" style="background:url(images/banar1.jpg) no-repeat center center;">
+              <div class="slider-text">
+
+                  <h2>{{getshowtitle show_id}}. <br>{{getseasontitle season_id}}</h2>
+                    <a class="btn common-btn" href="#">View show</a>
+                </div>
+          </div>
+          {{/each}}
+
+
+
+        </div>
+
+    </div>
+    
+    <div class="common-video-slider">
+      <h2>Discover our videos:</h2>
+      <div class="right-div">
+            <div id="comm-slider" class="owl-carousel right-slider">
+                
+             
+
+           {{#each videomaster}}
+              <div class="box-slide popupopenonseason"  style="background:url(images/banar1.jpg) no-repeat center center;">
+                  <div class="vedio-detial popupopenonseasonclass" data-id="{{season_id}}">
+                      <div class="name-season-main">
+                          <div class="vedio-name">{{getshowtitle show_id}} <!-- {{createdAt}} --></div>
+                            <div class="season-count">{{getseasontitle season_id}}</div>
+                        </div>
+                        <div class="vedio-tag">
+                          <ul>
+                              <li><a href="#">{{getcategorytitle show_id}}</a>, </li>
+                                <li><a href="#">{{getshowactor show_id}}</a></li>
+                            </ul>
+                        </div>
+                    </div>  
+              </div>
+              {{/each}}
+
+
+            
+             
+             
+              
+                               
+            </div>
+        </div>
+    </div>
+    
+    
+    <div class="home-right-left-img">
+      <div class="middal-div">
+          <div class="max-middal-contain">
+              <h2>LOREM IPSUM DOLOR SIT</h2>
+                <div class="left-side-con">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</div>
+                <div class="right-side-con">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</div>
+            </div>
+        </div>
+    </div>
+    
+    
+    
+    <div class="browse-video-section">
+      <div class="middal-div">
+          <div class="browse-video-con">
+              <h2>Lorem ipsum dolor sit amet</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                <div class="browse-video-btn">
+                  <a class="btn common-btn" href="#">Browse videos</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</template>
+
+<template name="browsevideos">
+<div id="browsevideos" class="video-detail video-browse">
+  
+    
+    <div class="single-banar" style="background:url(images/banar1.jpg) no-repeat center center;">
+    
+      <div class="slider-text">
+            <h2 class="text-center">Discover our shows</h2>
+        </div>
+    </div>
+    
+    
+    <div class="top-sarch-box">
+      <input id="tags_1" type="text" class="tags" value="" />
+    </div>
+    
+    <div class="search-result">
+      <div class="middal-div">
+        <ul>
+        
+
+  {{#each show}}
+
+         <li class="showdetailclass">
+
+         <div data-id="{{_id}}" class="search-single-box" style="background:url(images/banar1.jpg) no-repeat center center;">
+                        <div class="vedio-detial">
+                            <div class="name-season-main">
+                                <div class="vedio-name">{{showtitle}}</div>
+                                <div class="season-count"> <!-- {{getseasontitle season_id}} --></div>
+                            </div>
+                            <div class="vedio-tag">
+                                <ul>
+                                    <li><a href="#">{{showcategory}}</a></li>
+                                   
+                                </ul>
+                            </div>
+                        </div>  
+                    </div>
+               
+
+        </li>
+           
+            {{/each}}
+              
+         </ul>
+        </div>
+    </div>
+</div> 
+</template>
+
+
+
+<template name="showvideodetail">
+
+
+
+
+
+<div class="video-detail">
+  
+    
+    <div class="single-banar" style="background:url(images/banar1.jpg) no-repeat center center;">
+    
+      <div class="slider-text">
+            <h2>{{getshowtitledetail}}</h2>
+           <p>{{getshowdescription}}</p>
+        </div>
+    </div>
+    
+    
+    
+    <div class="searc-detail">
+      <div class="right-div">
+          <ul>
+              <li>
+                  <label>Starring:</label>
+                    <ul>
+                      <li>{{getshowactor}}</li>
+                       
+                    </ul>
+                </li>
+                <li>
+                  <label>Genre:</label>
+                    <ul>
+                      <li>{{getshowcategory}}</li>
+                        
+                    </ul>
+                </li>
+                <li>
+                  <label>Directed:</label>
+                    <ul>
+                      <li><a href="#">{{getshowdirector}}</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+    
+    
+    {{#each season}}
+
+
+    
+
+
+    <div class="common-video-slider">
+      <h2>{{season_title}}</h2>
+      <div class="right-div">
+            <div class="owl-carousel right-slider">
+                
+             {{#each getvideoformshowid _id}}
+
+             
+            <div class="box-slide" style="background:url(images/banar1.jpg) no-repeat center center;">
+                  <div class="vedio-detial">
+                      <div class="name-season-main">
+                          <div class="vedio-name">{{video_title}}</div>
+                            <div class="season-count">23:44</div>
+                        </div>
+                        <div class="video-disc">
+                          <p>{{video_description}}</p>
+                        </div>
+                    </div>  
+              </div>
+
+
+             {{/each}}
+
+      </div>
+        </div>
+    </div>
+
+
+    {{/each}}
+
+
+
+   
+
+
+ 
+
+    
+
+
+    
+</div>
+
+
+
+
+
+
+
+
+
+</template>
+
+
+<template name="uploadvideos"> 
+
+<div id="videoupload" class="video-detail video-upload">
+  
+    
+    <div class="single-banar" style="background:url(images/banar1.jpg) no-repeat center center;">
+    
+      <div class="slider-text text-center">
+            <a href="#" class="btn common-btn-white">Upload cover photo</a>
+            <p>Recommended cover photo zize: 1940px(w) x 600px(h)</p>
+        </div>
+    </div>
+    
+    
+    <div class="video-upload-form post-sign-in" style="display: none;">
+
+          <ul>
+
+              
+
+
+            <li>
+                  <div><label class="title-label">Show:</label></div>
+                    <div class="form-group">
+                      <select id="selectshow">
+                        <option value="0">Select Show</option>
+                         {{#each show}}
+                         <option value="{{_id}}" >{{showtitle}}</option>
+                         {{/each}}
+                      </select>
+                    </div>
+                    <div class="add-new-show">
+                      <a data-rel="add-new-show" class="poptrigger" href="javascript:void()">+ New show</a>
+                    </div>
+                </li>
+
+
+
+              <li>
+                  <label class="title-label">Season</label>
+                    <div class="form-group">
+                      <select id="selectseason">
+                        <option value="0">Select Season</option>
+                        {{#each season}}
+                         <option value="{{_id}}" >{{season_title}}</option>
+                         {{/each}}
+                        <option value="addnewseason">Add New Season +</option>
+                      </select>
+                    </div>
+                </li>
+
+
+                
+                <li>
+                  <label class="title-label">Title</label>
+                    <input type="text" class="simple-text" id="title" placeholder="Enter text" value="" />
+                </li>  
+
+            
+                <li>
+                  <input input type="file" id="file" class="button" accept="video/*">
+                </li>
+
+
+              <li>
+                  <label class="title-label">Brief description</label>
+                    <textarea id="description" class="simple-text-area" placeholder="Write a brief description"></textarea>                    
+                </li>  
+  
+                <li>
+                  
+                  <select id="privacy-status">
+                  <option>public</option>
+                  <option>unlisted</option>
+                  <option>private</option>
+                  </select>
+
+
+                </li> 
+
+                <li>
+                    <div class="left-label">Featured on homepage:</div>
+                      <div class="onoffswitch">
+                            <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch">
+                            <label class="onoffswitch-label" for="myonoffswitch">
+                                <span class="onoffswitch-inner"></span>
+                                <span class="onoffswitch-switch"></span>
+                            </label>
+                        </div>
+
+                </li>
+
+                <li>
+
+                
+                  
+               
+     
+
+              <div class="during-upload">
+                <p><span id="percent-transferred"></span>% done (<span id="bytes-transferred"></span>/<span id="total-bytes"></span> bytes)</p>
+                <progress id="upload-progress" max="1" value="0"></progress>
+              </div>
+
+              <div class="post-upload">
+                <p>Uploaded video with id <span id="video-id"></span>. Polling for status...</p>
+                <input type="button" id="submitinsertbuttonid" style="display: none;">
+                <ul id="post-upload-status"></ul>
+                <div id="player"></div>
+                
+              </div>
+
+                  
+                </li>
+
+            
+        <li> 
+
+               <button id="button" class="btn common-btn">Add video</button>
+
+              
+                <!--   <button id="signinButton" class="btn common-btn">Add video</button>  -->
+                  
+                
+                 
+                </li> 
+                
+            </ul>
+        
+
+        
+    </div>
+    
+
+    
+    
+    
+    
+</div> 
+
+<div class="pop-upbox" id="add-new-show">
+            <div class="popup-box">
+              <div class="pop-close">
+                  <a href="#" class="closePop sp-before">X</a>
+                </div><!--/.pop-close -->
+                <div class="user-detail-box">
+            <h3>Add new show</h3>
+                        <ul>
+                
+             <!--    <li>      
+                  <label class="title-label">Video upload</label>         
+                    <div id="dropzone"><form action="/upload" class="dropzone needsclick" id="demo-upload">
+
+                      <div class="dz-message needsclick">
+                        Drop files here or click to upload.<br />
+                        <span class="note needsclick">(This is just a demo dropzone. Selected files are <strong>not</strong> actually uploaded.)</span>
+                      </div>
+                    
+                    </form></div>
+                </li> 
+                 -->
+                <li>
+                  <label class="title-label">Title</label>
+                    <input type="text" id="showtitle" class="simple-text" placeholder="Enter text" value="" />
+                </li>
+                <li>
+                  <label class="title-label">Show description</label>
+                    <textarea class="simple-text-area" id="showdescription" placeholder="Write a brief description"></textarea>                    
+                </li>  
+                 <li>
+                  <label class="title-label">Directors</label>
+                    <input  id="showdirector" type="text" class="tags inputmulti" value="" />
+                </li>
+                <li>
+                  <label class="title-label">Actors</label>
+                    <input  id="showactor" type="text" class="tags inputmulti" value="" />
+                </li>
+                <li>
+                  <label class="title-label">Categories</label>
+                    <input  id="showcategory" type="text" class="tags inputmulti" value="" />
+                </li>
+                
+                
+                
+                <li>
+                  <button id="addshow" class="btn common-btn">Add show</button> 
+                </li>
+            </ul>
+        
+                </div><!--/.product-detail-box -->
+
+            </div><!--/.popup-box -->
+        </div><!--/.success-popup -->     
+
+
+
+ <span id="signinButton" class="pre-sign-in">
+                       
+                        <span
+                          class="g-signin"
+                          data-callback="signinCallback"
+                          data-clientid="185081036941-jm28fsaprecucs75ac8b2hn9j9pnvt6q.apps.googleusercontent.com"
+                          data-cookiepolicy="single_host_origin"
+                          data-scope="https://www.googleapis.com/auth/youtube.upload https://www.googleapis.com/auth/youtube">
+                        </span>
+                      </span> 
+
+
+
+</template>
+
+<template name="footer">
+  <footer>
+  <div class="middal-div">
+        <div class="footer-logo"><img src="images/footer-logo.png" width="30" height="29" alt=""/></div>
+        <div class="copy">&copy; project Synnefo 2016</div>
+    </div>
+</footer>
+</template>
 
